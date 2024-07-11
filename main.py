@@ -20,7 +20,7 @@ def filter_file(filter_type):
         previous_file_path = os.path.join(previous_folder, previous_file)
         new_file_path = os.path.join(new_folder, new_file)
         previous_df = pd.read_excel(previous_file_path)
-        new_df = pd.read_excel(new_file_path)   
+        new_df = pd.read_excel(new_file_path)        
         if filter_type == 'patient':
             columns_to_check = ['Patient', 'DOB','Address','Phone']
         else:
