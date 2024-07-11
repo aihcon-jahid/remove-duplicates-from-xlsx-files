@@ -4,7 +4,7 @@ import pandas as pd
 
 def get_first_file_in_folder(folder_path):
     files = os.listdir(folder_path)
-    files = [f for f in files if os.path.isfile(os.path.join(folder_path, f))]
+    files = [f for f in files if not f.startswith('.') and os.path.isfile(os.path.join(folder_path, f))]
     return files[0] if files else None
 
 
@@ -20,7 +20,7 @@ def filter_file(filter_type):
         previous_file_path = os.path.join(previous_folder, previous_file)
         new_file_path = os.path.join(new_folder, new_file)
         previous_df = pd.read_excel(previous_file_path)
-        new_df = pd.read_excel(new_file_path)        
+        new_df = pd.read_excel(new_file_path)   
         if filter_type == 'patient':
             columns_to_check = ['Patient', 'DOB','Address','Phone']
         else:
